@@ -59,12 +59,15 @@ public class MenuScreen implements Screen {
         textButtonStyle.font = font32;
         skin.add("simpleSkin", textButtonStyle);
 
+        Button btnContinueGame = new TextButton("Continue Game", skin, "simpleSkin");
         Button btnNewGame = new TextButton("Start New Game", skin, "simpleSkin");
         Button btnExitGame = new TextButton("Exit Game", skin, "simpleSkin");
+        btnContinueGame.setPosition(640 - 160, 280);
         btnNewGame.setPosition(640 - 160, 180);
         btnExitGame.setPosition(640 - 160, 80);
         stage.addActor(btnNewGame);
         stage.addActor(btnExitGame);
+        stage.addActor(btnContinueGame);
         btnNewGame.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -75,6 +78,13 @@ public class MenuScreen implements Screen {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 Gdx.app.exit();
+            }
+        });
+        btnContinueGame.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                ScreenManager.getInstance().changeScreen(ScreenManager.ScreenType.GAME);
+                ScreenManager.getInstance().getGameScreen().loadGame();
             }
         });
     }

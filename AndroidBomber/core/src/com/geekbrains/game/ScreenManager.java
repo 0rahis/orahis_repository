@@ -32,6 +32,10 @@ public class ScreenManager {
         return viewport;
     }
 
+    public GameScreen getGameScreen() {
+        return gameScreen;
+    }
+
     private ScreenManager() {
     }
 
@@ -79,5 +83,9 @@ public class ScreenManager {
 
     public void goToTarget() {
         game.setScreen(targetScreen);
+    }
+
+    public void loadingSaveGame(){
+        gameScreen.loadGame();
     }
 }
